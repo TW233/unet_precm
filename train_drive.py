@@ -17,7 +17,6 @@ import torchvision.transforms.functional as TF
 # 假设你把上面的代码保存为 networks/UNet/unet_PreCM_fixed.py
 from networks.UNet.unet_PreCM_fixed import unet_gconv as PreCM_unet_fixed
 from networks.UNet.unet import Unet as Standard_unet
-from networks.UNet.unet_FConv import unet_gconv as FConv_unet
 
 # --- 配置 ---
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -200,8 +199,6 @@ def run_experiment(model_type, run_id, dataset_root, all_files):
     
     if model_type == 'PreCM':
         model = PreCM_unet_fixed(in_channels=3, classes=1).to(DEVICE)
-    elif model_type == 'FConv':
-        model = FConv_unet(in_channels=3, classes=1).to(DEVICE)
     else:
         # 如果你想复现论文的标准Unet，这里也许该把start_channel也改小
         # 但为了对比，我们先保持32或16
@@ -288,4 +285,5 @@ def main():
             print("No successful runs.")
 
 if __name__ == '__main__':
+
     main()
