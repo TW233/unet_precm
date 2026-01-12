@@ -98,11 +98,11 @@ class finalConv(nn.Module):
     def __init__(self, in_ch, out_ch):
         super(finalConv, self).__init__()
         self.finalconv = PreCM3(in_ch, out_ch, 3, 1, 1)
-        self.bn = nn.BatchNorm2d(out_ch)
+        # self.bn = nn.BatchNorm2d(out_ch)
 
     def forward(self, x, output):
         x = self.finalconv(x, output)
-        x = self.bn(x)
+        # x = self.bn(x)
         return x
 
 
