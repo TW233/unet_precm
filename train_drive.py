@@ -13,9 +13,6 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 import torchvision.transforms.functional as TF
 
-import os
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
-
 
 # 引入我们刚才修改后的模型类
 # 假设你把上面的代码保存为 networks/UNet/unet_PreCM_fixed.py
@@ -266,7 +263,7 @@ def run_experiment(model_type, run_id, dataset_root, all_files):
 
 def main():
     # 设置你的数据路径
-    root = 'E:/PyCharm/Projects/data/DRIVE' 
+    root = './data/DRIVE' 
     # 确保此处指向的是测试集的图片目录
     test_dir = os.path.join(root, 'test', 'images')
     if not os.path.exists(test_dir):
@@ -292,4 +289,5 @@ def main():
             print("No successful runs.")
 
 if __name__ == '__main__':
+
     main()
